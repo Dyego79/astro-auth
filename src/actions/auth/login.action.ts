@@ -1,10 +1,5 @@
-import { object } from "astro/zod";
 import { defineAction, z } from "astro:actions";
-import {
-  signInWithEmailAndPassword,
-  signOut,
-  type AuthError,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, type AuthError } from "firebase/auth";
 import { firebase } from "src/firebase/config";
 
 export const loginUser = defineAction({

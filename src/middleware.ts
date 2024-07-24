@@ -5,7 +5,7 @@ const privateRoutes = ["/protected"];
 const notAuthenticatedRoutes = ["/login", "/register"];
 // `context` and `next` are automatically typed
 export const onRequest = defineMiddleware(
-  async ({ url, request, locals, redirect }, next) => {
+  async ({ url, locals, redirect }, next) => {
     const isLoggedIn = !!firebase.auth.currentUser;
     const user = firebase.auth.currentUser;
 

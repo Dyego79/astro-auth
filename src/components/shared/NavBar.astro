@@ -22,7 +22,7 @@ const { isLoggedIn } = Astro.locals;
           </li>
         ) : (
           <li id="logout" class="font-semibold text-gray-700">
-            <a href="/protected">Salir</a>
+            <a href="">Salir</a>
           </li>
         )
       }
@@ -91,6 +91,7 @@ const { isLoggedIn } = Astro.locals;
   const logoutElem = document.querySelector("#logout") as HTMLLIElement;
 
   logoutElem?.addEventListener("click", (e) => {
+    e.preventDefault();
     actions.logout();
     window.location.href = "/";
   });

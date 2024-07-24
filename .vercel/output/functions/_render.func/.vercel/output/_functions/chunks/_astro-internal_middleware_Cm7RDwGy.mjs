@@ -2,7 +2,7 @@ import { serialize, parse } from 'cookie';
 import { f as firebase } from './config_DzgpoZMP.mjs';
 import { A as AstroError, R as ResponseSentError } from './astro/assets-service_BhiTib06.mjs';
 import { yellow } from 'kleur/colors';
-import { A as ApiContextStorage, h as hasContentType, g as getAction, c as callSafely, f as formContentTypes } from './shared_GcQUumEP.mjs';
+import { A as ApiContextStorage, h as hasContentType, g as getAction, c as callSafely, f as formContentTypes } from './shared_XpBJMr5e.mjs';
 
 const DELETED_EXPIRATION = /* @__PURE__ */ new Date(0);
 const DELETED_VALUE = "deleted";
@@ -242,11 +242,27 @@ function defineMiddleware(fn) {
   return fn;
 }
 
+const privateRoutes = ["/protected"];
+const notAuthenticatedRoutes = ["/login", "/register"];
 const onRequest$2 = defineMiddleware(
-  async ({ url, request, locals }, next) => {
+  async ({ url, locals, redirect }, next) => {
     const isLoggedIn = !!firebase.auth.currentUser;
-    firebase.auth.currentUser;
+    const user = firebase.auth.currentUser;
     locals.isLoggedIn = isLoggedIn;
+    if (user) {
+      locals.user = {
+        avatar: user.photoURL ?? " ",
+        email: user.email,
+        name: user.displayName,
+        emailVerified: user.emailVerified
+      };
+    }
+    if (!isLoggedIn && privateRoutes.includes(url.pathname)) {
+      return redirect("/");
+    }
+    if (isLoggedIn && notAuthenticatedRoutes.includes(url.pathname)) {
+      return redirect("/");
+    }
     return next();
   }
 );

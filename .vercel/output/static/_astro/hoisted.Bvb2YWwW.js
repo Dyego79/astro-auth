@@ -1,0 +1,1 @@
+import{a as t}from"./ViewTransitions.astro_astro_type_script_index_0_lang.BRxNtN7k.js";const e=document.querySelector("#logout");e?.addEventListener("click",o=>{o.preventDefault(),t.logout(),window.location.href="/"});

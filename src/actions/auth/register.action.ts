@@ -1,7 +1,6 @@
 import { defineAction, z } from "astro:actions";
 import {
   createUserWithEmailAndPassword,
-  EmailAuthCredential,
   sendEmailVerification,
   updateProfile,
   type AuthError,
@@ -43,6 +42,7 @@ export const registerUser = defineAction({
         //url: "/protected?emailVerifed=true",
         url: `${import.meta.env.WEBSITE_URL}/protected?emailVerifed=true`,
       });
+      return user;
     } catch (error) {
       const firebaseError = error as AuthError;
       if (firebaseError.code === "auth/email-already-in-use") {
@@ -50,6 +50,5 @@ export const registerUser = defineAction({
       }
       throw new Error("Algo salió mal.");
     }
-    return { ok: true, msgge: "Usuario Creado" };
   },
 });

@@ -1,10 +1,10 @@
-import { defineAction, z } from "astro:actions";
+import { defineAction } from "astro:actions";
 import { signOut } from "firebase/auth";
 import { firebase } from "src/firebase/config";
 
 export const logout = defineAction({
   accept: "json",
-  handler: async (_, { cookies }) => {
+  handler: async () => {
     return await signOut(firebase.auth);
   },
 });

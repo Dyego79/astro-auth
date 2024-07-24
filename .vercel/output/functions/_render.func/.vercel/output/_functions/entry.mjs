@@ -3,7 +3,7 @@ import { l as levels, g as getEventPrefix, e as ensure404Route, d as default404I
 import { A as AstroError, q as i18nNoLocaleFoundInPath, s as appendForwardSlash, t as joinPaths, u as MiddlewareNoDataOrNextCalled, v as MiddlewareNotAResponse, G as GetStaticPathsRequired, w as InvalidGetStaticPathsReturn, x as InvalidGetStaticPathsEntry, y as GetStaticPathsExpectedParams, z as GetStaticPathsInvalidRouteParam, B as trimSlashes, P as PageNumberParamNotFound, C as NoMatchingStaticPathFound, H as PrerenderDynamicEndpointPathCollide, J as ReservedSlotName, L as LocalsNotAnObject, K as PrerenderClientAddressNotAvailable, Q as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, T as RewriteWithBodyUsed, U as AstroResponseHeadersReassigned, R as ResponseSentError, V as fileExtension, W as slash, X as prependForwardSlash, Y as removeTrailingForwardSlash } from './chunks/astro/assets-service_BhiTib06.mjs';
 import { R as ROUTE_TYPE_HEADER, g as REROUTE_DIRECTIVE_HEADER, h as createSlotValueFromString, r as renderTemplate, d as renderComponent, D as DEFAULT_404_COMPONENT, i as renderSlotToString, j as renderJSX, k as chunkToString, l as isRenderInstruction, n as clientLocalsSymbol, o as clientAddressSymbol$1, p as renderPage, q as REWRITE_DIRECTIVE_HEADER_KEY, t as REWRITE_DIRECTIVE_HEADER_VALUE, u as renderEndpoint, A as ASTRO_VERSION, v as responseSentSymbol, w as REROUTABLE_STATUS_CODES } from './chunks/astro/server_Dp_YYEdS.mjs';
 import 'cookie';
-import { A as AstroCookies, s as sequence, d as defineMiddleware, o as onRequest } from './chunks/_astro-internal_middleware_DmsQnL5d.mjs';
+import { A as AstroCookies, s as sequence, d as defineMiddleware, o as onRequest } from './chunks/_astro-internal_middleware_Cm7RDwGy.mjs';
 import 'clsx';
 import 'kleur/colors';
 import 'fast-glob';
@@ -2319,7 +2319,7 @@ const _manifest = Object.assign(manifest, {
     middleware: onRequest
 });
 const _args = {
-    "middlewareSecret": "06f8c79c-6742-40d8-9719-627d3ca72eba",
+    "middlewareSecret": "188c744f-666b-4410-9799-164fedc475ae",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);

@@ -1,4 +1,4 @@
-import { c as callSafely, a as ActionError, b as ActionInputError, d as getApiContext$1 } from './shared_GcQUumEP.mjs';
+import { c as callSafely, a as ActionError, b as ActionInputError, d as getApiContext$1 } from './shared_XpBJMr5e.mjs';
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification, signOut, signInWithEmailAndPassword, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 import { f as firebase } from './config_DzgpoZMP.mjs';
 import { z } from 'zod';
@@ -122,7 +122,7 @@ function toActionProxy(actionCallback = {}, aggregatedPath = "/_actions/") {
 }
 async function actionHandler(param, path) {
   {
-    const { getAction } = await import('./shared_GcQUumEP.mjs').then(n => n.u);
+    const { getAction } = await import('./shared_XpBJMr5e.mjs').then(n => n.u);
     const action = await getAction(path);
     if (!action) throw new Error(`Action not found: ${path}`);
     return action(param);
@@ -157,8 +157,10 @@ const registerUser = defineAction({
       );
       updateProfile(firebase.auth.currentUser, { displayName: name });
       await sendEmailVerification(firebase.auth.currentUser, {
-        url: "http://localhost:4321/protected?emailVerifed=true"
+        //url: "/protected?emailVerifed=true",
+        url: `${"http://localhost:4321"}/protected?emailVerifed=true`
       });
+      return user;
     } catch (error) {
       const firebaseError = error;
       if (firebaseError.code === "auth/email-already-in-use") {
@@ -166,13 +168,12 @@ const registerUser = defineAction({
       }
       throw new Error("Algo salió mal.");
     }
-    return { ok: true, msgge: "Usuario Creado" };
   }
 });
 
 const logout = defineAction({
   accept: "json",
-  handler: async (_, { cookies }) => {
+  handler: async () => {
     return await signOut(firebase.auth);
   }
 });
